@@ -1,48 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Centros de reciclaje en Tierra Blanca</title>
-    <meta charset="utf-8" />
-    <style>
-      #map {
-        height: 100vh;
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        const tierraBlanca = { lat: 18.4512, lng: -96.3586 };
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 14,
-          center: tierraBlanca,
-        });
-
-        const lugares = [
-          "Centro de reciclaje Tierra Blanca Veracruz",
-          "Recicladora de plástico Tierra Blanca Veracruz",
-          "Centro acopio reciclaje Tierra Blanca Veracruz",
-        ];
-
-        const geocoder = new google.maps.Geocoder();
-
-        lugares.forEach((lugar) => {
-          geocoder.geocode({ address: lugar }, (results, status) => {
-            if (status === "OK" && results[0]) {
-              new google.maps.Marker({
-                map,
-                position: results[0].geometry.location,
-                title: lugar,
-              });
-            }
-          });
-        });
-      }
-    </script>
-    <script async
-      src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap">
-    </script>
-  </body>
-</html>
+<div id="map" style="height: 400px;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  var map = L.map('map').setView([18.5554, -95.3577], 15); // Coordenadas de Tierra Blanca, Veracruz
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+</script>
