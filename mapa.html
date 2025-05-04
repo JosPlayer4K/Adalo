@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Centros de reciclaje en Tierra Blanca</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      function initMap() {
+        const tierraBlanca = { lat: 18.4539, lng: -96.3583 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 13,
+          center: tierraBlanca,
+        });
+
+        const locations = [
+          { lat: 18.4539, lng: -96.3583, title: "Centro 1" },
+          { lat: 18.4582, lng: -96.3611, title: "Centro 2" },
+          { lat: 18.4511, lng: -96.3540, title: "Centro 3" },
+          { lat: 18.4595, lng: -96.3599, title: "Centro 4" },
+          { lat: 18.4561, lng: -96.3555, title: "Centro 5" },
+          { lat: 18.4525, lng: -96.3620, title: "Centro 6" },
+          { lat: 18.4547, lng: -96.3571, title: "Centro 7" },
+          { lat: 18.4500, lng: -96.3530, title: "Centro 8" },
+          { lat: 18.4580, lng: -96.3510, title: "Centro 9" },
+          { lat: 18.4552, lng: -96.3563, title: "Centro 10" },
+        ];
+
+        locations.forEach(loc => {
+          new google.maps.Marker({
+            position: { lat: loc.lat, lng: loc.lng },
+            map,
+            title: loc.title,
+          });
+        });
+      }
+    </script>
+  </head>
+  <body onload="initMap()">
+    <div id="map"></div>
+  </body>
+</html>
